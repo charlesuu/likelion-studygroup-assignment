@@ -1,0 +1,13 @@
+#home.html
+<h1>LikeLion 10th Blog Project</h1>
+<br />
+{% for post in posts %}
+<div>
+  <a href="{%url 'detail' post.id %}"> <!-- 추가 -->
+    <h5>{{post.title}}</h5>
+    {{post.created_at}}
+    <p>{{post.contents}}</p>
+  </a>
+</div>
+<br />
+{% endfor %}
