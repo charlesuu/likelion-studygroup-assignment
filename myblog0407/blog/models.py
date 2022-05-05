@@ -9,6 +9,10 @@ class Post(models.Model):
         return self.title
 
     def summary(self):
-        return self.contents[:100]
+        index = self.content.find('결론')
+        if index != -1:
+            return self.content[index:]
+        else:
+            return self.content[:100]
 
 

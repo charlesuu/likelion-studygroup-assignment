@@ -22,5 +22,13 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', blog.views.home, name = "home"),
     path('post/<int:id>/', blog.views.detail, name="detail"),
-    path('new',blog.views.new,name = 'new'),
+    path('new', blog.views.new, name = 'new'),
+    path('create', blog.views.create, name = 'create'),
+    path('post/edit/<int:id>', blog.views.edit, name = 'edit'),
+    path('post/update/<int:id>', blog.views.update, name = 'update'),
+    # update 경로인 path 함수로 요청이 들어올 경우 조금 특이하다. 
+    # post/update/<int:id> 를 위한 html이 따로 있지 않다. 
+    # update url로 요청과 데이터가 들어오면 view가 그걸 처리해서, 다른 url로 redirect시켜준다.
+    # 결론 -> 요청은 항상 특정한 url로 받는구나. html이나 프론트가 없는 url도 있구나. 이런 url은 요청을 받기 위한 url이구나.
+    path('post/delete/<int:id>', blog.views.delete, name = 'delete'),
 ]
